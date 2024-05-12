@@ -59,6 +59,12 @@ const Profile = () => {
             Мои результаты
           </Text>
         </View>
+        <FlatList
+          data={user.examinations}
+          renderItem={({ item }) => (
+            <Text className="text-black text-3xl">{item.result}</Text>
+          )}
+        />
       </View>
     </ScrollView>
   )

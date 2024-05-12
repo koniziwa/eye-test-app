@@ -1,26 +1,35 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { View, Image, TouchableOpacity, Text, ScrollView } from 'react-native'
 import { router } from 'expo-router'
 
 import FormField from '../../components/entities/FormField.jsx'
 
 import TestServices from '../../api/TestServices.js'
+import AuthServices from '../../api/AuthServices.js'
 
 import SERVER_URL from '../../constants/SERVER_URL.js'
 
 const ColorPerception = () => {
+  const [username, setUsername] = useState('')
   const [userAnswer, setUserAnswer] = useState('')
   const [previousAnswers, setPreviousAnswers] = useState([])
   const [imageNumber, setImageNumber] = useState(1)
 
+  useEffect(() => {
+    AuthServices.getUserInformation()
+      .then(({ data }) => setUsername(data.username))
+      .catch(e => console.log(e))
+  }, [])
+
   const handlePress = () => {
-    TestServices.testRabkin(previousAnswers, imageNumber, userAnswer)
+    TestServices.testRabkin(previousAnswers, imageNumber, userAnswer, username)
       .then(({ status, result }) => {
         switch (status) {
           case 'next':
             setPreviousAnswers([
               ...previousAnswers,
               {
+                username,
                 imageNumber,
                 userAnswer,
               },

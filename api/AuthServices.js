@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import SERVER_URL from '../constants/SERVER_URL.js'
 
 class AuthServices {
-  async getUserInformation() {
+  async checkToken() {
     const token = await AsyncStorage.getItem('AccessToken')
     const { data } = await axios.post(
       `${SERVER_URL}/auth/isTokenValid`,
@@ -16,8 +16,13 @@ class AuthServices {
         },
       }
     )
+    return data
+  }
 
-    if (data === true) {
+  async getUserInformation() {
+    const isTokenValid = await this.checkToken()
+    if (isTokenValid) {
+      const token = await AsyncStorage.getItem('AccessToken')
       const user = await axios.get(`${SERVER_URL}/auth/user`, {
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',

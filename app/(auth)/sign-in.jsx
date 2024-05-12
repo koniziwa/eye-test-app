@@ -6,19 +6,18 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 
 import FormField from '../../components/entities/FormField.jsx'
 
-import SERVER_URL from "../../constants/SERVER_URL.js"
+import SERVER_URL from '../../constants/SERVER_URL.js'
 
-import images from "../../constants/images.js"
-import icons from "../../constants/icons.js"
-
+import images from '../../constants/images.js'
+import icons from '../../constants/icons.js'
 
 const SignIn = () => {
   const [form, setForm] = useState({
-    username: "",
-    password: "",
+    username: '',
+    password: '',
   })
 
-  const [errorText, setErrorText] = useState("")
+  const [errorText, setErrorText] = useState('')
 
   const handleSignIn = () => {
     const user = {
@@ -27,14 +26,15 @@ const SignIn = () => {
     }
 
     axios
-    .post(`${SERVER_URL}/auth/login`, user)
-    .then(({ data }) => {
-      AsyncStorage.setItem("AccessToken", data.token)
-      router.push("/main")
-    })
-    .catch((e) => {
-      setErrorText(e.response.data.message)
-    })
+      .post(`${SERVER_URL}/auth/login`, user)
+      .then(({ data }) => {
+        AsyncStorage.setItem('AccessToken', data.token).then(() =>
+          router.push('/main')
+        )
+      })
+      .catch(e => {
+        setErrorText(e.response.data.message)
+      })
   }
 
   return (
@@ -46,36 +46,42 @@ const SignIn = () => {
           className="w-[390px] h-[295px]"
         />
         <View className="h-full bg-white rounded-3xl -translate-y-6 py-6 px-4 items-center">
-          <Text className="mt-3 text-primary-blue font-pbold text-4xl">Войти в аккаунт</Text>
-          <FormField 
+          <Text className="mt-3 text-primary-blue font-pbold text-4xl">
+            Войти в аккаунт
+          </Text>
+          <FormField
             title="Имя пользователя"
             value={form.username}
-            handleChangeText={(e) => setForm({ ...form, username: e})}
+            handleChangeText={e => setForm({ ...form, username: e })}
             placeholder="user123"
             icon={icons.user}
-          /> 
-          <FormField 
+          />
+          <FormField
             title="Пароль"
             value={form.password}
-            handleChangeText={(e) => setForm({ ...form, password: e})}
+            handleChangeText={e => setForm({ ...form, password: e })}
             placeholder="Не менее 8 символов"
             icon={icons.lock}
           />
-          {errorText.length > 0 ? <Text className="text-center mt-4 text-red-600  font-pmedium text-md">{errorText}</Text> : null}
+          {errorText.length > 0 ? (
+            <Text className="text-center mt-4 text-red-600  font-pmedium text-md">
+              {errorText}
+            </Text>
+          ) : null}
           <TouchableOpacity
-          onPress={() => router.push("/sign-up")}
-          className="w-full items-center justify-center mt-2">
-            <Text 
-            className="underline text-md text-primary-blue text-center">
+            onPress={() => router.push('/sign-up')}
+            className="w-full items-center justify-center mt-2"
+          >
+            <Text className="underline text-md text-primary-blue text-center">
               У меня нет аккаунта. Зарегистрироваться
             </Text>
           </TouchableOpacity>
-          <TouchableOpacity 
+          <TouchableOpacity
             className="w-full bg-primary-blue mt-8 rounded-lg py-4 justify-center items-center"
             onPress={handleSignIn}
           >
-          <Text className="text-white font-pbold text-2xl">Войти</Text>
-        </TouchableOpacity>
+            <Text className="text-white font-pbold text-2xl">Войти</Text>
+          </TouchableOpacity>
         </View>
       </View>
     </ScrollView>

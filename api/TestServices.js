@@ -3,17 +3,16 @@ import axios from 'axios'
 import SERVER_URL from '../constants/SERVER_URL.js'
 
 class TestServices {
-  async testRabkin(previousAnswers, imageNumber, userAnswer) {
+  async testRabkin(previousAnswers, imageNumber, userAnswer, username) {
     const request = [
       ...previousAnswers,
       {
+        username,
         imageNumber,
         userAnswer,
       },
     ]
-    console.log(request)
     const response = await axios.post(`${SERVER_URL}/test/rabkin`, request)
-    console.log(response.data)
     return JSON.parse(response.data)
   }
 }
