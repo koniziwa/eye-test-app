@@ -9,11 +9,11 @@ import AuthServices from '../../api/AuthServices.js'
 
 import SERVER_URL from '../../constants/SERVER_URL.js'
 
-const ColorPerception = () => {
+const VisualAcuity = () => {
   const [username, setUsername] = useState('')
   const [userAnswer, setUserAnswer] = useState('')
   const [previousAnswers, setPreviousAnswers] = useState([])
-  const [imageNumber, setImageNumber] = useState(1)
+  const [imageNumber, setImageNumber] = useState('1-1.png')
 
   useEffect(() => {
     AuthServices.getUserInformation()
@@ -22,7 +22,7 @@ const ColorPerception = () => {
   }, [])
 
   const handlePress = () => {
-    TestServices.testColorPerception(
+    TestServices.testVisualAcuity(
       previousAnswers,
       imageNumber,
       userAnswer,
@@ -60,7 +60,7 @@ const ColorPerception = () => {
         <Image
           className="w-[300px] h-[300px] rounded-xl"
           source={{
-            uri: `${SERVER_URL}/images/rabkins_charts/${imageNumber}.jpg`,
+            uri: `${SERVER_URL}/images/sivtsevs_charts/${imageNumber}`,
           }}
         />
         <FormField
@@ -80,4 +80,4 @@ const ColorPerception = () => {
   )
 }
 
-export default ColorPerception
+export default VisualAcuity

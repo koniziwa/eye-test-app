@@ -6,8 +6,11 @@ const TestLayout = () => {
     <>
       <Stack>
         <Stack.Screen name="main" options={{ headerShown: false }} />
-        <Stack.Screen name="color-perception" options={{ headerShown: false }} />
-        <Stack.Screen name="cff" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="color-perception"
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen name="visual-acuity" options={{ headerShown: false }} />
       </Stack>
       <StatusBar />
     </>
