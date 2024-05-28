@@ -1,5 +1,12 @@
 import { useEffect, useState } from 'react'
-import { View, Image, TouchableOpacity, Text, ScrollView } from 'react-native'
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  Text,
+  ScrollView,
+  PixelRatio,
+} from 'react-native'
 import { router } from 'expo-router'
 
 import FormField from '../../components/entities/FormField.jsx'
@@ -53,12 +60,13 @@ const VisualAcuity = () => {
 
   return (
     <ScrollView
+      className="bg-white"
       contentContainerStyle={{ height: '100%' }}
       keyboardShouldPersistTaps="handled"
     >
       <View className="w-full h-full items-center justify-center p-4">
         <Image
-          className="w-[300px] h-[300px] rounded-xl"
+          className={`w-[297px] h-[497px] rounded-xl`}
           source={{
             uri: `${SERVER_URL}/images/sivtsevs_charts/${imageNumber}`,
           }}
