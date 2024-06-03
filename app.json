@@ -27,6 +27,14 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Разрешите доступ к галерее, чтобы загрузить аватар"
+        }
+      ]
+    ]
   }
 }

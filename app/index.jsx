@@ -9,7 +9,7 @@ const SplashScreen = () => {
     const timeout = setTimeout(() => {
       // getInitialRoute().then(initialRoute => router.push(initialRoute))
       router.push('/onboarding')
-    }, 100)
+    }, 500)
 
     return () => clearTimeout(timeout)
   }, [])

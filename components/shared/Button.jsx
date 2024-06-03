@@ -9,7 +9,7 @@ const Button = ({ text, color, onPress }) => {
 
   return (
     <TouchableOpacity
-      className="mt-8 rounded-lg py-4 justify-center items-center"
+      className="w-full mt-8 rounded-lg py-4 justify-center items-center"
       style={styles.button}
       onPress={onPress}
     >
