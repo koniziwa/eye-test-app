@@ -53,6 +53,7 @@ const ColorPerception = () => {
 
   return (
     <ScrollView
+      className="bg-white"
       contentContainerStyle={{ height: '100%' }}
       keyboardShouldPersistTaps="handled"
     >

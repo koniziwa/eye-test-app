@@ -3,17 +3,16 @@ import { StatusBar } from 'expo-status-bar'
 import { router } from 'expo-router'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
+import Button from '../../components/shared/Button.jsx'
+import TopImage from '../../components/shared/TopImage.jsx'
+
 import images from '../../constants/images.js'
 
 const OnboardingScreen = () => {
   return (
     <ScrollView contentContainerStyle={{ height: '100%' }}>
       <View className="w-full h-full">
-        <Image
-          className="w-[390px] h-[532px]"
-          source={images.onboardingImage}
-          resizeMode="cover"
-        />
+        <TopImage source={images.onboardingImage} />
         <View className="h-full bg-white rounded-3xl -translate-y-6 py-6 px-4">
           <Text className="text-2xl font-pbold max-w-[320px]">
             Не переставайте видеть мир в красках
@@ -22,18 +21,17 @@ const OnboardingScreen = () => {
             Зарегистрируйтесь в приложении, чтобы иметь возможность отслеживать
             свои показатели зрения
           </Text>
-          <TouchableOpacity
-            className="bg-primary-black mt-8 rounded-lg py-4 justify-center items-center"
-            onPress={() => {
-              AsyncStorage.setItem('showOnboarding', 'false').then(() =>
-                router.push('/sign-up')
-              )
-            }}
-          >
-            <Text className="text-white font-pbold text-2xl">
-              Зарегистрироваться
-            </Text>
-          </TouchableOpacity>
+          {
+            <Button
+              text="Зарегистрируйтесь"
+              color="#232323"
+              onPress={() =>
+                AsyncStorage.setItem('showOnboarding', 'false').then(() =>
+                  router.push('/sign-up')
+                )
+              }
+            />
+          }
         </View>
       </View>
       <StatusBar hidden />

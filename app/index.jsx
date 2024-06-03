@@ -8,7 +8,7 @@ const SplashScreen = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       getInitialRoute().then(initialRoute => router.push(initialRoute))
-    }, 2000)
+    }, 100)
 
     return () => clearTimeout(timeout)
   }, [])

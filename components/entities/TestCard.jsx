@@ -1,12 +1,19 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import { router } from 'expo-router'
 
 import icons from '../../constants/icons.js'
 
 const TestCard = ({ route, title, description, color }) => {
+  const styles = StyleSheet.create({
+    card: {
+      backgroundColor: color,
+    },
+  })
+
   return (
     <View
-      className={`w-full flex-row rounded-xl justify-between p-4 border-2 border-black mb-4`}
+      style={styles.card}
+      className="w-full flex-row rounded-xl justify-between p-4 mb-4"
     >
       <View className="w-[260px] gap-y-4">
         <Text className="font-pbold text-black text-2xl">{title}</Text>

@@ -1,17 +1,12 @@
 import { useEffect, useState } from 'react'
-import {
-  View,
-  Text,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 
 import AuthServices from '../../api/AuthServices'
 
 import images from '../../constants/images.js'
+import UserAvatar from '../../components/shared/UserAvatar.jsx'
 import icons from '../../constants/icons.js'
+import TestResultList from '../../components/widgets/TestResultList.jsx'
 
 const Profile = () => {
   const [user, setUser] = useState({})
@@ -30,13 +25,7 @@ const Profile = () => {
         source={images.profileBG}
       />
       <View className="w-full h-full bg-white rounded-3xl -translate-y-6 py-6 px-4 items-center">
-        <View className="rounded-full border-2 w-32 h-32 -mt-24 items-center justify-center bg-white">
-          <Image
-            className="w-3/4 h-3/4"
-            resizeMode="contain"
-            source={images.profileImage}
-          />
-        </View>
+        <UserAvatar size={128} extrastyles={'-mt-24'} />
         <View className="p-4 flex-row gap-2 items-center">
           <Text className="text-center font-pbold text-2xl text-black">
             {user.username}
@@ -50,7 +39,7 @@ const Profile = () => {
           </TouchableOpacity>
         </View>
         <View>
-          <Text className="text-center font-pregular">
+          <Text className="text-center font-pregular text-lg">
             Москва, 19 лет, муж.
           </Text>
         </View>
@@ -59,19 +48,7 @@ const Profile = () => {
             Мои результаты
           </Text>
         </View>
-        <FlatList
-          className="w-full h-full"
-          data={user.examinations}
-          renderItem={({ item }) => (
-            <View className="w-full border-2 border-black rounded-xl p-2 mb-3">
-              <Text className="text-black font-pbold text-lg">{item.type}</Text>
-              <Text className="text-black text-md">{item.date}</Text>
-              <Text className="text-black font-pregular text-md">
-                {item.result}
-              </Text>
-            </View>
-          )}
-        />
+        <TestResultList examinations={user.examinations} />
       </View>
     </View>
   )
