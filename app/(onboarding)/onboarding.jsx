@@ -21,17 +21,15 @@ const OnboardingScreen = () => {
             Зарегистрируйтесь в приложении, чтобы иметь возможность отслеживать
             свои показатели зрения
           </Text>
-          {
-            <Button
-              text="Зарегистрируйтесь"
-              color="#232323"
-              onPress={() =>
-                AsyncStorage.setItem('showOnboarding', 'false').then(() =>
-                  router.push('/sign-up')
-                )
-              }
-            />
-          }
+          <Button
+            text="Зарегистрируйтесь"
+            color="#232323"
+            onPress={() =>
+              AsyncStorage.setItem('showOnboarding', 'false').then(() =>
+                router.push('/sign-up')
+              )
+            }
+          />
         </View>
       </View>
       <StatusBar hidden />

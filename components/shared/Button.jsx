@@ -1,4 +1,4 @@
-import { TouchableOpacity, StyleSheet } from 'react-native'
+import { Text, TouchableOpacity, StyleSheet } from 'react-native'
 
 const Button = ({ text, color, onPress }) => {
   const styles = StyleSheet.create({
@@ -10,7 +10,7 @@ const Button = ({ text, color, onPress }) => {
   return (
     <TouchableOpacity
       className="mt-8 rounded-lg py-4 justify-center items-center"
-      styles={styles.button}
+      style={styles.button}
       onPress={onPress}
     >
       <Text className="text-white font-pbold text-2xl">{text}</Text>

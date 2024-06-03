@@ -7,7 +7,8 @@ import getInitialRoute from '../utils/getInititalRoute.js'
 const SplashScreen = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
-      getInitialRoute().then(initialRoute => router.push(initialRoute))
+      // getInitialRoute().then(initialRoute => router.push(initialRoute))
+      router.push('/onboarding')
     }, 100)
 
     return () => clearTimeout(timeout)

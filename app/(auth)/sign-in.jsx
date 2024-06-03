@@ -72,7 +72,7 @@ const SignIn = () => {
             onPress={() => router.push('/sign-up')}
             className="w-full items-center justify-center mt-2"
           >
-            <Text className="underline text-md text-primary-blue text-center">
+            <Text className="mt-2 underline text-md text-primary-blue text-center">
               У меня нет аккаунта. Зарегистрироваться
             </Text>
           </TouchableOpacity>

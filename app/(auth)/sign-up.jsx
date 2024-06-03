@@ -45,7 +45,7 @@ const SignUp = () => {
           className="w-[390px] h-[295px]"
         />
         <View className="h-full bg-white rounded-3xl -translate-y-6 py-6 px-4 items-center">
-          <Text className="mt-3 text-primary-blue font-pbold text-4xl">
+          <Text className="mt-2 text-primary-blue font-pbold text-4xl">
             Регистрация
           </Text>
           <FormField
@@ -79,7 +79,7 @@ const SignUp = () => {
             onPress={() => router.push('/sign-in')}
             className="w-full items-center justify-center mt-2"
           >
-            <Text className="underline text-md text-primary-blue text-center">
+            <Text className="mt-2 underline text-md text-primary-blue text-center">
               Я уже зарегистрирован. Войти
             </Text>
           </TouchableOpacity>
